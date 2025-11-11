@@ -4,13 +4,12 @@ import { useDispatch } from "react-redux";
 import { pokemonApi } from "./services/pokemon";
 
 import rootReducer from "./reducers";
-import directUsReducers from "./directUsReducers";
 
 export const store = configureStore({
   reducer: {
     rootReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
-    directUs:directUsReducers
+    
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware),
