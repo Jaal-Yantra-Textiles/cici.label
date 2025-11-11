@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Custom Colors */
+  --color-primary: #363dc2;
+  --color-secondary: #282faf;
+  --color-tertiary: #202692;
+  --color-accent: #03b9f1;
+  
+  /* Custom Fonts */
+  --font-nexa: 'nexa_boldregular', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  
+  /* Custom Animations */
+  --animate-gradient-shift: gradient-shift 15s ease infinite;
+  --animate-blob: blob 7s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* Custom Font Face */
+@font-face {
+	font-family: 'nexa_boldregular';
+	font-weight: bold;
+	font-style: normal;
+	src: url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.eot');
+	src: url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'), 
+	     url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff2') format('woff2'), 
+	     url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff') format('woff'), 
+	     url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.ttf') format('truetype'), 
+	     url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
+}
+
+/* Keyframes for custom animations */
+@keyframes gradient-shift {
+  0%, 100% { 
+    background-position: 0% 50%;
+    background-size: 200% 200%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes blob {
+  0%, 100% { 
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% { 
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% { 
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-20px);
+  }
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-mono);
+  color: white;
+  background-color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page Loader */
+.loading::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: var(--color-primary);
+}
+
+.loading::after {
+  content: '';
+  position: fixed;
+  z-index: 10000;
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  border: 10px solid var(--color-secondary);
+  border-left-color: white;
+  animation: spin 1s linear infinite;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+}
+
+/* Animation delay utilities */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom utilities */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--color-accent), white);
+}
