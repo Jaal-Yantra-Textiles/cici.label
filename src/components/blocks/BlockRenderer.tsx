@@ -183,7 +183,9 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
   return (
     <div 
       ref={blockRef}
-      className="w-full min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 py-16 opacity-0 translate-y-10 transition-all duration-700"
+      className={`w-full min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 py-16 transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
     >
       <div className="w-full max-w-7xl">
         {renderLayout()}
